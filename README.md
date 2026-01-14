@@ -44,12 +44,29 @@
 
 ```bash
 qshar@qsharpcub05:~/terra$ terraform plan
+yandex_iam_service_account.sa-bucket: Refreshing state... [id=aje56pltd33t52rtn9n0]
+yandex_iam_service_account.sa-ig: Refreshing state... [id=aje6simgaoh3bj55ef48]
+yandex_vpc_network.network-1: Refreshing state... [id=enpmikvjmj06qp5sr7pk]
+yandex_iam_service_account_static_access_key.sa-static-key: Refreshing state... [id=ajep3ejm0hnsgrpiqn1b]
+yandex_resourcemanager_folder_iam_member.bucket-editor: Refreshing state...
+yandex_vpc_subnet.subnet-public: Refreshing state... [id=e9b7hpjcq1jbf7bqef9r]
+yandex_resourcemanager_folder_iam_member.ig-editor: Refreshing state...
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
 symbols:
   + create
 
 Terraform will perform the following actions:
+
+  # random_id.bucket_suffix will be created
+  + resource "random_id" "bucket_suffix" {
+      + b64_std     = (known after apply)
+      + b64_url     = (known after apply)
+      + byte_length = 4
+      + dec         = (known after apply)
+      + hex         = (known after apply)
+      + id          = (known after apply)
+    }
 
   # yandex_compute_instance_group.ig-1 will be created
   + resource "yandex_compute_instance_group" "ig-1" {
@@ -59,7 +76,7 @@ Terraform will perform the following actions:
       + id                  = (known after apply)
       + instances           = (known after apply)
       + name                = "fixed-ig-with-balancer"
-      + service_account_id  = (known after apply)
+      + service_account_id  = "aje6simgaoh3bj55ef48"
       + status              = (known after apply)
 
       + allocation_policy {
@@ -112,8 +129,10 @@ Terraform will perform the following actions:
               + ipv6         = (known after apply)
               + ipv6_address = (known after apply)
               + nat          = true
-              + network_id   = (known after apply)
-              + subnet_ids   = (known after apply)
+              + network_id   = "enpmikvjmj06qp5sr7pk"
+              + subnet_ids   = [
+                  + "e9b7hpjcq1jbf7bqef9r",
+                ]
             }
 
           + resources {
@@ -138,41 +157,6 @@ Terraform will perform the following actions:
               + size = 3
             }
         }
-    }
-
-  # yandex_iam_service_account.sa-bucket will be created
-  + resource "yandex_iam_service_account" "sa-bucket" {
-      + created_at         = (known after apply)
-      + description        = (known after apply)
-      + folder_id          = (known after apply)
-      + id                 = (known after apply)
-      + labels             = (known after apply)
-      + name               = "sa-for-bucket"
-      + service_account_id = (known after apply)
-    }
-
-  # yandex_iam_service_account.sa-ig will be created
-  + resource "yandex_iam_service_account" "sa-ig" {
-      + created_at         = (known after apply)
-      + description        = (known after apply)
-      + folder_id          = (known after apply)
-      + id                 = (known after apply)
-      + labels             = (known after apply)
-      + name               = "sa-for-ig"
-      + service_account_id = (known after apply)
-    }
-
-  # yandex_iam_service_account_static_access_key.sa-static-key will be created
-  + resource "yandex_iam_service_account_static_access_key" "sa-static-key" {
-      + access_key                   = (known after apply)
-      + created_at                   = (known after apply)
-      + description                  = "static access key for bucket"
-      + encrypted_secret_key         = (known after apply)
-      + id                           = (known after apply)
-      + key_fingerprint              = (known after apply)
-      + output_to_lockbox_version_id = (known after apply)
-      + secret_key                   = (sensitive value)
-      + service_account_id           = (known after apply)
     }
 
   # yandex_lb_network_load_balancer.load-balancer-1 will be created
@@ -216,25 +200,11 @@ Terraform will perform the following actions:
         }
     }
 
-  # yandex_resourcemanager_folder_iam_member.bucket-editor will be created
-  + resource "yandex_resourcemanager_folder_iam_member" "bucket-editor" {
-      + folder_id = "b1g3sfourkjnlhsdmlut"
-      + member    = (known after apply)
-      + role      = "storage.editor"
-    }
-
-  # yandex_resourcemanager_folder_iam_member.ig-editor will be created
-  + resource "yandex_resourcemanager_folder_iam_member" "ig-editor" {
-      + folder_id = "b1g3sfourkjnlhsdmlut"
-      + member    = (known after apply)
-      + role      = "editor"
-    }
-
   # yandex_storage_bucket.netology-bucket will be created
   + resource "yandex_storage_bucket" "netology-bucket" {
-      + access_key            = (known after apply)
-      + acl                   = "public-read"
-      + bucket                = "yakovlev-netology-bucket"
+      + access_key            = "YCAJEd_B-O9RJ6G6mVzcAC3rK"
+      + acl                   = (known after apply)
+      + bucket                = (known after apply)
       + bucket_domain_name    = (known after apply)
       + default_storage_class = (known after apply)
       + folder_id             = (known after apply)
@@ -254,9 +224,9 @@ Terraform will perform the following actions:
 
   # yandex_storage_object.object-1 will be created
   + resource "yandex_storage_object" "object-1" {
-      + access_key   = (known after apply)
+      + access_key   = "YCAJE3CUVVh6wx0uaW7MMWfEO"
       + acl          = "public-read"
-      + bucket       = "yakovlev-netology-bucket"
+      + bucket       = (known after apply)
       + content_type = (known after apply)
       + id           = (known after apply)
       + key          = "test_pic.jpg"
@@ -264,33 +234,17 @@ Terraform will perform the following actions:
       + source       = "data/test_pic.jpg"
     }
 
-  # yandex_vpc_network.network-1 will be created
-  + resource "yandex_vpc_network" "network-1" {
-      + created_at                = (known after apply)
-      + default_security_group_id = (known after apply)
-      + folder_id                 = (known after apply)
-      + id                        = (known after apply)
-      + labels                    = (known after apply)
-      + name                      = "network1"
-      + subnet_ids                = (known after apply)
-    }
+Plan: 5 to add, 0 to change, 0 to destroy.
 
-  # yandex_vpc_subnet.subnet-public will be created
-  + resource "yandex_vpc_subnet" "subnet-public" {
-      + created_at     = (known after apply)
-      + folder_id      = (known after apply)
-      + id             = (known after apply)
-      + labels         = (known after apply)
-      + name           = "public"
-      + network_id     = (known after apply)
-      + v4_cidr_blocks = [
-          + "192.168.10.0/24",
-        ]
-      + v6_cidr_blocks = (known after apply)
-      + zone           = "ru-central1-a"
-    }
+Changes to Outputs:
+  + bucket_domain_name        = (known after apply)
+  + bucket_info               = (sensitive value)
+  + external_load_balancer_ip = (known after apply)
 
-Plan: 11 to add, 0 to change, 0 to destroy.
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run
+"terraform apply" now.
 ```
 
 
