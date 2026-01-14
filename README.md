@@ -58,7 +58,7 @@
 ![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_015.png)
 
 
-[Адрес для скачивания файла: http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg](http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg)
+Адрес для скачивания файла: [http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg](http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg)
 
 
 
