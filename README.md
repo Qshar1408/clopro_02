@@ -60,7 +60,51 @@
 
 Адрес для скачивания файла: [http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg](http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg)
 
+#### 2. Создать группу ВМ в public подсети фиксированного размера с шаблоном LAMP и веб-страницей, содержащей ссылку на картинку из бакета:
 
+ - Создать Instance Group с тремя ВМ и шаблоном LAMP. Для LAMP рекомендуется использовать `image_id = fd827b91d99psvq5fjit`.
+ - Для создания стартовой веб-страницы рекомендуется использовать раздел `user_data` в [meta_data](https://cloud.yandex.ru/docs/compute/concepts/vm-metadata).
+ - Разместить в стартовой веб-странице шаблонной ВМ ссылку на картинку из бакета.
+ - Настроить проверку состояния ВМ.
+
+[Файл instance-group.tf](https://github.com/Qshar1408/clopro_02/blob/main/src/instance-group.tf)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_004.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_005.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_006.png)
+
+#### 3. Подключить группу к сетевому балансировщику:
+
+ - Создать сетевой балансировщик.
+ - Проверить работоспособность, удалив одну или несколько ВМ.
+
+[Файл lb.tf](https://github.com/Qshar1408/clopro_02/blob/main/src/lb.tf)
+
+Балансировщик:
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_008.png)
+
+Удаляем одну из нод:
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_009.png)
+
+Проверка работоспособности:
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_010.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_011.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_012.png)
+
+Общее кол-во созданных ресурсов:
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_013.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_014.png)
+
+План разворачивания ресурсов:
 
 ```bash
 qshar@qsharpcub05:~/terra$ terraform plan
@@ -266,9 +310,6 @@ Changes to Outputs:
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run
 "terraform apply" now.
 ```
-
-
-
 
 
 ---
