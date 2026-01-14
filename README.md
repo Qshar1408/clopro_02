@@ -42,6 +42,26 @@
 
 ### Решение:
 
+#### 1.Создать бакет Object Storage и разместить в нём файл с картинкой:
+     - Создать бакет в Object Storage с произвольным именем (например, имя_студента_дата).
+     - Положить в бакет файл с картинкой.
+     - Сделать файл доступным из интернета.
+
+[Файл bucket.tf](https://github.com/Qshar1408/clopro_02/blob/main/src/bucket.tf)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_001.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_002.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_003.png)
+
+![clopro_02](https://github.com/Qshar1408/clopro_02/blob/main/img/clopro_02_015.png)
+
+
+[Адрес для скачивания файла](http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg)
+
+
+
 ```bash
 qshar@qsharpcub05:~/terra$ terraform plan
 yandex_iam_service_account.sa-bucket: Refreshing state... [id=aje56pltd33t52rtn9n0]
@@ -248,8 +268,7 @@ Note: You didn't use the -out option to save this plan, so Terraform can't guara
 ```
 
 
-Адрес для скачивания файла:
-http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg
+
 
 
 ---
