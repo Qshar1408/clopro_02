@@ -248,6 +248,10 @@ Note: You didn't use the -out option to save this plan, so Terraform can't guara
 ```
 
 
+Адрес для скачивания файла:
+http://gribanov-netology-bucket-cebabb9d.storage.yandexcloud.net/test_pic.jpg
+
+
 ---
 ## Задание 2*. AWS (задание со звёздочкой)
 
